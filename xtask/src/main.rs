@@ -77,7 +77,7 @@ struct Compile {
 impl Compile {
     fn handle(self, sh: &Shell) -> Result<()> {
         let target = self.arch.as_ref();
-        let profile = if self.debug { "debug" } else { "release" };
+        let build_type = if self.debug { "build" } else { "build --release" };
 
         add_target_if_needed(sh, target)?;
         match self.arch {
@@ -103,7 +103,7 @@ impl Compile {
             }
             Arch::StaticX86_64 => {}
         }
-        cmd!(sh, "cargo build --profile {profile} --lib --target {target} --locked").run()?;
+        cmd!(sh, "cargo {build_type} --lib --target {target} --locked").run()?;
         Ok(())
     }
 }
