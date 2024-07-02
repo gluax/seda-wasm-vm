@@ -41,7 +41,7 @@ jobs:
             echo "is_allowed=false" >> $GITHUB_OUTPUT
           fi
 
-  test_release:
+  build:
     needs: check_pass
     if: ${{ needs.check_pass.outputs.is_allowed == 'true' }}
     runs-on: ubuntu-latest
@@ -73,3 +73,9 @@ jobs:
         if: ${{ !github.event.inputs.debug }}
         run: |
           cargo xtask compile ${{ github.event.inputs.architecture }}
+      
+      - name: 📤 Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: target/libseda_tally_vm*.a
+          overwrite: true
