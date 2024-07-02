@@ -1788,6 +1788,7 @@ dependencies = [
  "seda-wasm-vm",
  "serde_json",
  "thiserror",
+ "tracing",
  "wasmer",
 ]
 
