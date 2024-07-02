@@ -15,9 +15,10 @@ on:
           - static-aarch64
           - static-x86-64
       debug:
-        required: true
+        required: false
         description: 'Enable debug mode'
         type: boolean
+        default: false
 
 # Don't allow multiple of the same job to run
 concurrency:
