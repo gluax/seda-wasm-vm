@@ -71,4 +71,4 @@ jobs:
       - name: 🔨 Build Library
         if: ${{ !github.event.inputs.debug }}
         run: |
-          cargo xtask compile ${{ github.event.inputs.architecture }} --debug
+          cargo xtask compile ${{ github.event.inputs.architecture }}
